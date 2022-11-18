@@ -69,6 +69,7 @@ jobs:
              cd frontend
              npm install
              npm run test
+  
   test-backend:
     docker:
       - image: circleci/node:13.8.0
@@ -97,6 +98,7 @@ jobs:
             npm install
             
             npm audit fix --audit-level=critical --force
+  
   scan-backend:
     docker:
       - image: circleci/node:13.8.0
@@ -110,8 +112,8 @@ jobs:
             cd backend
             npm install
             npm audit fix --audit-level=critical --force
-
-deploy-infrastructure:
+  
+  deploy-infrastructure:
     docker:
       - image: amazon/aws-cli
     steps:
@@ -155,7 +157,7 @@ deploy-infrastructure:
       - destroy-environment:
             workflow-id: ${CIRCLE_WORKFLOW_ID:0:7}           
 
-configure-infrastructure:
+  configure-infrastructure:
       docker:
         - image: python:3.7-alpine3.16
       steps:
@@ -194,7 +196,7 @@ configure-infrastructure:
         - destroy-environment:
             workflow-id: "${CIRCLE_WORKFLOW_ID:0:7}"
 
-run-migrations:
+  run-migrations:
     docker:
       - image: circleci/node:13.8.0
     steps:
