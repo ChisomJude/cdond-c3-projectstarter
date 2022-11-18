@@ -18,7 +18,7 @@ commands:
             aws cloudformation delete-stack \
                 --stack-name udapipo-frontend-<< parameters.workflow-id >> \
                 --region us-east-1
-            exit 1
+            
 
 
 jobs:
@@ -116,6 +116,11 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
+      - run:
+            name: install tar and gzip
+            command: |
+              yum install -y tar gzip
+
       - run:
           name: Ensure back-end infrastructure exists
           command: |
