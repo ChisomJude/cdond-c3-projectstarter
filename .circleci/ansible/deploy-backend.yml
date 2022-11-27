@@ -28,5 +28,4 @@
       
   roles:
     - deploy
-    - configure-prometheus
-    - configure-prometheus-node-exporter
+    
