@@ -215,7 +215,7 @@ jobs:
             ansible-playbook -i inventory.txt configure-server.yml
       - destroy-environment         
 
-run-migrations:
+  run-migrations:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -238,7 +238,7 @@ run-migrations:
       - destroy-environment
       - revert-migrations
 
-deploy-frontend:
+  deploy-frontend:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -274,7 +274,7 @@ deploy-frontend:
       - destroy-environment
       - revert-migrations
                     
-deploy-backend:
+  deploy-backend:
     docker:
       - image: cimg/python:3.10.4
     steps:
@@ -314,7 +314,7 @@ deploy-backend:
             ansible-playbook -i inventory.txt deploy-backend.yml
       - destroy-environment       
 
-smoke-test:
+  smoke-test:
     docker:
       - image: python:3.7-alpine3.11
     steps:
@@ -361,7 +361,7 @@ smoke-test:
       - destroy-environment  
       - revert-migrations
 
-cloudfront-update:
+  cloudfront-update:
     docker:
       - image: amazon/aws-cli
     steps:
@@ -389,7 +389,7 @@ cloudfront-update:
       - destroy-environment
       - revert-migrations 
 
-cleanup:
+  cleanup:
       docker:
         - image: amazon/aws-cli
       steps:
