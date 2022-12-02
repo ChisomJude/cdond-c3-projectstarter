@@ -6,7 +6,7 @@
     become: true
     synchronize:
       src: ../../backend/dist
-      dest: /home/ubuntu/udapio
+      dest: /home/ubuntu/udapipo
       recursive: true
 
   - name: "copy node_modules"
